@@ -1,0 +1,1188 @@
+{
+	"info": {
+		"_postman_id": "92b1df9f-32d5-4a5d-b21e-4e6315a5db77",
+		"name": "SportingEvents",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "security",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"jomhar.samson@mail.com\",\r\n    \"password\":\"@Dm1n@1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8088/user-gateway/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"user-gateway",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "save_user",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test2@mail.com\",\r\n    \"password\": \"@Dm1n@1234\",\r\n    \"phoneNumber\": \"5584943049\",\r\n    \"firstName\": \"userFn\",\r\n    \"middleName\": \"userMn\",\r\n    \"lastName\": \"userLn\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8088/user-gateway/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"user-gateway",
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "validate_jwt_token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/user-gateway/api/v1/users/validateJwtToken",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"user-gateway",
+								"api",
+								"v1",
+								"users",
+								"validateJwtToken"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_email_from_jwt",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/user-gateway/api/v1/users/getEmailFromJwt",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"user-gateway",
+								"api",
+								"v1",
+								"users",
+								"getEmailFromJwt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hello",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VydGVzdEBtYWlsLmNvbSIsImV4cCI6MTY4MjQ0MzcxMywiaWF0IjoxNjgyNDA3NzEzfQ.0uvLf0mQ7sHHHTQDc3d7Ec_y30moHrxbrKMfxrucugqGj087cez9nsiqIMcr5_TsryJxKQoncEqz0-LYLl8NXA",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8088/users/hello",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"users",
+								"hello"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VydGVzdEBtYWlsLmNvbSIsImV4cCI6MTY4MzgyNTEyOCwiaWF0IjoxNjgzNzg5MTI4fQ.3io5JnkzNK8dT64bEoIUU7NytrACXNDBUb52fssr4MrB9nseF1v3oDFGt-_mGg7EhltCzuYcxOIIEw2681o8EA",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "player-service",
+			"item": [
+				{
+					"name": "player",
+					"item": [
+						{
+							"name": "get_all_players",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb21oYXIuc2Ftc29uQG1haWwuY29tIiwiZXhwIjoxNjgxNDg3OTMyLCJpYXQiOjE2ODE0NTE5MzJ9.tCCbw_AVSPz2nt3B2-YYhnIEOao3MIh2g8PTYfrM0XbVZLG2gTbyJmdM9VPWCjG0vp9L8t7frm65CAuPxkIjkA",
+										"type": "default",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8088/player-gateway/api/v1/players?page=0&size=10",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"player-gateway",
+										"api",
+										"v1",
+										"players"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "save_player",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"apacheDemo\",\r\n    \"lastName\": \"bestplayerrrrs\",\r\n    \"country\": \"philippiness\",\r\n    \"teamId\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8088/player-gateway/api/v1/players",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"player-gateway",
+										"api",
+										"v1",
+										"players"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update_player",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"UpdateFn\",\r\n    \"lastName\": \"UpdateLn\",\r\n    \"country\": \"philippines\",\r\n    \"teamId\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8088/player-gateway/api/v1/players/10",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"player-gateway",
+										"api",
+										"v1",
+										"players",
+										"10"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete_player",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8088/player-gateway/api/v1/players/12",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"player-gateway",
+										"api",
+										"v1",
+										"players",
+										"12"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get_player",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8088/player-gateway/api/v1/players/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"player-gateway",
+										"api",
+										"v1",
+										"players",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get_multiple_players",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8088/player-gateway/api/v1/players/multiple?playerIds=1,2,4,5,6,7,8",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"player-gateway",
+										"api",
+										"v1",
+										"players",
+										"multiple"
+									],
+									"query": [
+										{
+											"key": "playerIds",
+											"value": "1,2,4,5,6,7,8"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "team",
+					"item": [
+						{
+							"name": "get_team",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8088/team-gateway/api/v1/teams/17",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"team-gateway",
+										"api",
+										"v1",
+										"teams",
+										"17"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get_all_teams",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8088/team-gateway/api/v1/teams",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"team-gateway",
+										"api",
+										"v1",
+										"teams"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get_multiple_team",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8088/team-gateway/api/v1/teams/multiple?teamIds=1,3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"team-gateway",
+										"api",
+										"v1",
+										"teams",
+										"multiple"
+									],
+									"query": [
+										{
+											"key": "teamIds",
+											"value": "1,3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "save_team",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"teamName\": \"test441\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8088/team-gateway/api/v1/teams",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"team-gateway",
+										"api",
+										"v1",
+										"teams"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update_team",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"teamName\": \"test44\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8088/team-gateway/api/v1/teams/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"team-gateway",
+										"api",
+										"v1",
+										"teams",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete_team",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8088/team-gateway/api/v1/teams/17",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"team-gateway",
+										"api",
+										"v1",
+										"teams",
+										"17"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb21oYXIuc2Ftc29uQG1haWwuY29tIiwiZXhwIjoxNjg0MTYyMTgzLCJpYXQiOjE2ODQxMjYxODN9.lpNZKlSFzXVLuaGANI2zfsOiPrmhVHg3RnWgMErLusoZe6VbHl8tLgTbwgLCUx0R0xKv2CbDgtJoRMU0jGY-FA",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "ticket-service",
+			"item": [
+				{
+					"name": "ticket",
+					"item": [
+						{
+							"name": "get_all_tickets",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8088/ticket-gateway/api/v1/tickets?page=0&size=10&sort=ticketId",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"ticket-gateway",
+										"api",
+										"v1",
+										"tickets"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "10"
+										},
+										{
+											"key": "sort",
+											"value": "ticketId"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "save_ticket",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"customerName\": \"Demo\",\r\n    \"ticketPrice\": 500.00,\r\n    \"matchId\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8088/ticket-gateway/api/v1/tickets",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"ticket-gateway",
+										"api",
+										"v1",
+										"tickets"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update_ticket",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"customerName\": \"EditTicket\",\r\n    \"ticketPrice\": \"500.00\",\r\n    \"matchId\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8088/ticket-gateway/api/v1/tickets/37",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"ticket-gateway",
+										"api",
+										"v1",
+										"tickets",
+										"37"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete_ticket",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8088/ticket-gateway/api/v1/tickets/37",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"ticket-gateway",
+										"api",
+										"v1",
+										"tickets",
+										"37"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get_ticket",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8088/ticket-gateway/api/v1/tickets/37",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"ticket-gateway",
+										"api",
+										"v1",
+										"tickets",
+										"37"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "match",
+					"item": [
+						{
+							"name": "get_all_matches",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8088/match-gateway/api/v1/matches?page=0&size=20",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"match-gateway",
+										"api",
+										"v1",
+										"matches"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "20"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get_match",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8088/match-gateway/api/v1/matches/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"match-gateway",
+										"api",
+										"v1",
+										"matches",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "save_match",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fieldId\": 2,\r\n    \"tournamentId\": 1,\r\n    \"teamsId\": \"1,3\",\r\n    \"participantsId\": \"5,6\",\r\n    \"dateTime\": \"2023-05-20 16:16:00\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8088/match-gateway/api/v1/matches",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"match-gateway",
+										"api",
+										"v1",
+										"matches"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete_match",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8088/match-gateway/api/v1/matches/10",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"match-gateway",
+										"api",
+										"v1",
+										"matches",
+										"10"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update_match",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fieldId\": 2,\r\n    \"tournamentId\": 1,\r\n    \"teamsId\": \"1,3\",\r\n    \"participantsId\": \"3,4\",\r\n    \"dateTime\": \"2023-06-08 10:10:23\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8088/match-gateway/api/v1/matches/9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"match-gateway",
+										"api",
+										"v1",
+										"matches",
+										"9"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "field",
+					"item": [
+						{
+							"name": "get_all_fields",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8088/field-gateway/api/v1/fields?page=0&size=10",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"field-gateway",
+										"api",
+										"v1",
+										"fields"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "save_field",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fieldName\": \"newField\",\r\n    \"fieldAddress\": \"fieldAddress\",\r\n    \"capacity\": 1000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8088/field-gateway/api/v1/fields",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"field-gateway",
+										"api",
+										"v1",
+										"fields"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update_field",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fieldName\": \"newFieldU\",\r\n    \"fieldAddress\": \"fieldAddressU\",\r\n    \"capacity\": 1000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8088/field-gateway/api/v1/fields/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"field-gateway",
+										"api",
+										"v1",
+										"fields",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete_field",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8088/field-gateway/api/v1/fields/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"field-gateway",
+										"api",
+										"v1",
+										"fields",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get_field",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8088/field-gateway/api/v1/fields/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"field-gateway",
+										"api",
+										"v1",
+										"fields",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "tournament",
+					"item": [
+						{
+							"name": "get_all_tournaments",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8088/tournament-gateway/api/v1/tournaments?page=0&size=10",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"tournament-gateway",
+										"api",
+										"v1",
+										"tournaments"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "save_tournament",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"sportsCategory\": \"sportCategory\",\r\n    \"tournamentName\": \"tournamentName\",\r\n    \"tournamentStyle\": \"tournamentStyle\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8088/tournament-gateway/api/v1/tournaments",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"tournament-gateway",
+										"api",
+										"v1",
+										"tournaments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update_tournament",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"sportsCategory\": \"sportCategory1\",\r\n    \"tournamentName\": \"tournamentName1\",\r\n    \"tournamentStyle\": \"tournamentStyle1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8088/tournament-gateway/api/v1/tournaments/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"tournament-gateway",
+										"api",
+										"v1",
+										"tournaments",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete_tournament",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8088/tournament-gateway/api/v1/tournaments/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"tournament-gateway",
+										"api",
+										"v1",
+										"tournaments",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get_tournament",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8088/tournament-gateway/api/v1/tournaments/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"tournament-gateway",
+										"api",
+										"v1",
+										"tournaments",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb21oYXIuc2Ftc29uQG1haWwuY29tIiwiZXhwIjoxNjg0NDI1MjAyLCJpYXQiOjE2ODQzODkyMDJ9.eOTLIPTMq4B6DAtdYAOj1nfmxOwWXUKZ8ulGZ0h3G2qb-YBJeag2o6xE32LpAI46CqgXg02KLS6iNqZxE2_75w",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}

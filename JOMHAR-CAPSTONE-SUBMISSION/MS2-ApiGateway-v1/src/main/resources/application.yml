@@ -1,0 +1,76 @@
+server:
+  port: 8088
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+
+spring:
+  application:
+    name: ms2-apigateway-v1
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: user-service
+          uri: lb://MS6-LOGINSERVICE-V1
+          predicates:
+            - Path=/user-gateway/**
+            - Method=POST,GET,PUT,DELETE
+          filters:
+            - StripPrefix=1
+        - id: player-service
+          uri: lb://MS7-PLAYERSERVICE-V1
+          predicates:
+            - Path=/player-gateway/**
+            - Method=POST,GET,PUT,DELETE
+          filters:
+            - StripPrefix=1
+        - id: team-service
+          uri: lb://MS8-TEAMSERVICE-V1
+          predicates:
+            - Path=/team-gateway/**
+            - Method=POST,GET,PUT,DELETE
+          filters:
+            - StripPrefix=1
+        - id: ticket-service
+          uri: lb://MS9-TICKETSERVICE-V1
+          predicates:
+            - Path=/ticket-gateway/**
+            - Method=POST,GET,PUT,DELETE
+          filters:
+            - StripPrefix=1
+        - id: tournament-service
+          uri: lb://MS10-TOURNAMENTSERVICE-V1
+          predicates:
+            - Path=/tournament-gateway/**
+            - Method=POST,GET,PUT,DELETE
+          filters:
+            - StripPrefix=1
+        - id: field-service
+          uri: lb://MS11-FIELDSERVICE-V1
+          predicates:
+            - Path=/field-gateway/**
+            - Method=POST,GET,PUT,DELETE
+          filters:
+            - StripPrefix=1
+        - id: match-service
+          uri: lb://MS12-MATCHSERVICE-V1
+          predicates:
+            - Path=/match-gateway/**
+            - Method=POST,GET,PUT,DELETE
+          filters:
+            - StripPrefix=1
+
+management:
+  endpoint:
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
